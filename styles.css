@@ -1,0 +1,45 @@
+body
+{
+	padding: 50px;
+}
+
+h1
+{
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+table th
+{
+	text-align: center;
+}
+.angular-google-map-container
+{
+	height: 300px; 
+	margin: 40px;
+	border: 2px solid #ccc;
+}
+
+#submit
+{
+	margin-top: 20px; 
+}
+
+#newRowDiv label
+{
+	text-align: center;
+	font-size: 1.1em;
+}
+
+#addNewLabel
+{
+	padding-top: 10px;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+
+#newRowDiv
+{
+	border: 1px solid #aaa;
+}

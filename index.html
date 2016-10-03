@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false">
+	</script>
+
+	<link rel="stylesheet" href="styles.css">
+	<!-- styles.css -->
+
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Bootstrap -->
+
+	<title>Top Spots Angular</title>
+
+	<!-- bower:css -->
+	<!-- endbower -->
+
+	<!-- inject:css -->
+	<!-- endinject -->
+
+</head>
+<body ng-controller="MainCtrl">
+
+<h1>Top Spots Angular</h1>
+	<table class="table table-striped">
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Location</th>
+		</tr>
+		<tr  ng-repeat = "data in spots">
+			<td>{{data.name}}</td>
+			<td>{{data.description}}</td>
+			<td>
+				<a class="button" ng-href="https://www.google.com/maps?q={{data.location[0]}},{{data.location[1]}}" target="_blank"><button class="btn btn-primary">Open in Google Maps</button></a>
+				
+			</td>
+		</tr>
+	</table>
+		<label id="addNewLabel" class="col-sm-12">Add a new Attraction</label>
+	<div id="newRowDiv">
+		<form id="addNewRowForm" role="form" ng-submit="addRow()">
+			<div>
+				<div class="col-sm-offset-1 col-sm-2">
+					<label class="col-sm-offset-3 col-sm-6">Name</label>
+					<input type="text" name="Name" class="form-control" ng-model='name'>
+				</div>
+				<div class="col-sm-6">
+					<label class="col-sm-offset-3 col-sm-6">Description</label>
+					<textarea ng-model='description' class="form-control" rows="2"></textarea>
+				</div>
+				<div class="col-sm-3">
+					<label>Click on map for location</label>
+					<label>{{longitude}}</label>
+					<label>{{latitude}}</label>
+				</div>
+				<div class="col-sm-offset-3 col-sm-6">
+					<input id="submit" type="submit" value="Submit" class="btn form-control btn-primary"/>
+				</div>
+			</div>
+			<div class="col-sm-offset-1 col-sm-10">
+				<ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.events">
+					<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+			    	</ui-gmap-marker>
+				</ui-gmap-google-map>
+			</div>
+		</form>
+	</div>
+	<!-- bower:js -->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+	<script src="bower_components/lodash/lodash.js"></script>
+	<script src="bower_components/markerclustererplus/src/markerclusterer.js"></script>
+	<script src="bower_components/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.js"></script>
+	<script src="bower_components/google-maps-utility-library-v3-infobox/dist/infobox.js"></script>
+	<script src="bower_components/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.js"></script>
+	<script src="bower_components/js-rich-marker/src/richmarker.js"></script>
+	<script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<!-- endbower -->
+
+	<!-- inject:js -->
+	<!-- endinject -->
+
+	<script src="index.js"></script>
+
+</body>
+</html>
